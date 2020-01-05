@@ -485,6 +485,22 @@ func (s *Session) UserUpdateStatus(status Status) (st *Settings, err error) {
 	return
 }
 
+// UserUpdateStatusCustom update the user status with a custom status
+// status   : The new status
+func (s *Session) UserUpdateStatusCustom(status CustomStatus) (st *Settings, err error) {
+	data := struct {
+		CustomStatus CustomStatus `json:"custom_status"`
+	}{status}
+
+	body, err := s.RequestWithBucketID("PATCH", EndpointUserSettings("@me"), data, EndpointUserSettings(""))
+	if err != nil {
+		return
+	}
+
+	err = unmarshal(body, &st)
+	return
+}
+
 // UserConnections returns the user's connections
 func (s *Session) UserConnections() (conn []*UserConnection, err error) {
 	response, err := s.RequestWithBucketID("GET", EndpointUserConnections("@me"), nil, EndpointUserConnections("@me"))

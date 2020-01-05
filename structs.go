@@ -693,6 +693,7 @@ type Settings struct {
 	RestrictedGuilds       []string           `json:"restricted_guilds"`
 	FriendSourceFlags      *FriendSourceFlags `json:"friend_source_flags"`
 	Status                 Status             `json:"status"`
+	CustomStatus           CustomStatus       `json:"custom_status"`
 	DetectPlatformAccounts bool               `json:"detect_platform_accounts"`
 	DeveloperMode          bool               `json:"developer_mode"`
 }
@@ -708,6 +709,13 @@ const (
 	StatusInvisible    Status = "invisible"
 	StatusOffline      Status = "offline"
 )
+
+// CustomStatus represents a user's custom status
+type CustomStatus struct {
+	Text      string `json:"text"`
+	EmojiName string `json:"emoji_name,omitempty"`
+	ExpiresAt string `json:"expires_at,omitempty"`
+}
 
 // FriendSourceFlags stores ... TODO :)
 type FriendSourceFlags struct {
