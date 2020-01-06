@@ -600,6 +600,7 @@ const (
 	GameTypeStreaming
 	GameTypeListening
 	GameTypeWatching
+	GameTypeStatus
 )
 
 // A Game struct holds the name of the "playing .." game for a user
@@ -609,6 +610,7 @@ type Game struct {
 	URL           string     `json:"url,omitempty"`
 	Details       string     `json:"details,omitempty"`
 	State         string     `json:"state,omitempty"`
+	Emoji         Emoji      `json:"emoji,omitempty"`
 	TimeStamps    TimeStamps `json:"timestamps,omitempty"`
 	Assets        Assets     `json:"assets,omitempty"`
 	ApplicationID string     `json:"application_id,omitempty"`
